@@ -65,4 +65,10 @@ public class Player : MonoBehaviour
         }
     }
 
+    public float GetSpeed()
+    {
+        float speedScale = 10f;
+        return rb.velocity.magnitude * speedScale;
+    }
+
 }
