@@ -5,7 +5,7 @@ using UnityEngine;
 public static class SoundManager 
 {
 
-    [SerializeField] [Range(0, 1)] private static float volume = 1;
+    private static float volume = 1;
 
     private static GameObject musicGameObject;
     private static AudioSource musicAudioSource;
