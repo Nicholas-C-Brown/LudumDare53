@@ -4860,9 +4860,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a7b007eeb8a06448ada83dfae2809bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carRigidbody2D: {fileID: 7615990414167628001}
+  input: {fileID: 0}
+  rb: {fileID: 7615990414167628001}
   speed: 270
-  turnSpeed: 30
+  turnSpeedMax: 40
 --- !u!50 &7615990414167628001
 Rigidbody2D:
   serializedVersion: 4

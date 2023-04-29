@@ -6,40 +6,46 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private Rigidbody2D carRigidbody2D;
+    //Inspector Fields
+    [SerializeField] private GameInput input;
+    [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed = 10f;
     [SerializeField] private float turnSpeedMax = 1f;
 
+    //Private Fields
+    private float turnSpeed;
+
+    //Events
     public event EventHandler<OnKillEventArgs> OnKill;
     public class OnKillEventArgs : EventArgs
     {
         public int Points;
     }
     
-    private float turnSpeed;
-
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
+        HandleMovement();
+    }
 
+    private void HandleMovement()
+    {
         turnSpeed = Mathf.Lerp(turnSpeed, 0f, Time.deltaTime * 5);
 
-        if (Input.GetKey(KeyCode.W))
+        if (input.IsGasPressed())
         {
-            carRigidbody2D.AddForce(transform.up * speed);
+            rb.AddForce(transform.up * speed);
             turnSpeed = turnSpeedMax;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (input.IsTurnLeftPressed())
         {
-            carRigidbody2D.AddTorque(turnSpeed);
+            rb.AddTorque(turnSpeed);
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (input.IsTurnRightPressed())
         {
-            carRigidbody2D.AddTorque(-turnSpeed);
+            rb.AddTorque(-turnSpeed);
         }
-
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -52,7 +58,7 @@ public class Player : MonoBehaviour
             OnKill?.Invoke(this, new OnKillEventArgs { Points = killable.GetPoints() });
 
             //Apply stopping force
-            carRigidbody2D.AddForce(-carRigidbody2D.velocity * killable.GetMass(), ForceMode2D.Impulse);
+            rb.AddForce(-rb.velocity * killable.GetMass(), ForceMode2D.Impulse);
 
             //Kill
             killable.Perish();
