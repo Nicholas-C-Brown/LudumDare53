@@ -5,6 +5,8 @@ using UnityEngine;
 public static class SoundManager 
 {
 
+    [SerializeField] [Range(0, 1)] private static float volume = 1;
+
     private static GameObject musicGameObject;
     private static AudioSource musicAudioSource;
     private static AudioClip music;
@@ -18,7 +20,7 @@ public static class SoundManager
 
     public static void PlayMusic()
     {
-        musicAudioSource.PlayOneShot(music);
+        musicAudioSource.PlayOneShot(music, volume);
     }
 
     public static void PauseMusic()
@@ -35,9 +37,31 @@ public static class SoundManager
     {
         GameObject soundGameObject = new GameObject(clip.name);
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-        audioSource.PlayOneShot(clip);
+        audioSource.PlayOneShot(clip, volume);
 
         Object.Destroy(soundGameObject, clip.length);
+    }
+
+    public static float GetVolume()
+    {
+        return volume;
+    }
+
+    public static void SetVolume(float level)
+    {
+
+        if (level < 0 || level > 1)
+        {
+            Debug.LogError("Invalid volume level");
+        }
+
+        volume = level;
+
+        if(musicAudioSource != null)
+        {
+            musicAudioSource.volume = volume;
+        }
+
     }
     
 

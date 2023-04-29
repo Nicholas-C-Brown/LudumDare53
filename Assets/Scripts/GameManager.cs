@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
         paused = false;
     }
 
-    private void Input_OnPauseToggle(object sender, System.EventArgs e)
+    private void Input_OnPauseToggle(object sender, EventArgs e)
     {
         paused = !paused;
         
@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
 
         OnPause?.Invoke(this, new OnPauseEventArgs { Paused = paused });
 
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        Time.timeScale = 1;
+        OnPause?.Invoke(this, new OnPauseEventArgs { Paused = paused });
     }
 
 }
