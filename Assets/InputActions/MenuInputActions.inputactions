@@ -1,0 +1,34 @@
+{
+    "name": "MenuInputActions",
+    "maps": [
+        {
+            "name": "Menu",
+            "id": "730c6592-db4c-4c49-820f-3dd5d712b99a",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "8fafb436-8690-4278-a705-82ff564cf530",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c58d065d-1f64-4e5e-affa-8a42dce107aa",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

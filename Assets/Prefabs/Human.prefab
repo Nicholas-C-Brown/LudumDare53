@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48adc750bed6d8a46b81863274d93c79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 8300000, guid: 326886d3978f19e489037da76e9bd391, type: 3}
   points: 100
   mass: 2
   bloodPrefab: {fileID: 7199829314768956730, guid: a081fef1c04336742a6ea80ee4e78404, type: 3}

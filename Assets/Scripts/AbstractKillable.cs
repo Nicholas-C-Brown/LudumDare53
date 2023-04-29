@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class AbstractKillable : MonoBehaviour
 {
 
+    [SerializeField] protected AudioClip deathSound;
     [SerializeField] protected int points;
     [SerializeField] protected float mass;
     
